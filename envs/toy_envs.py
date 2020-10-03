@@ -9,7 +9,7 @@ from gym.spaces import Box
 class Car1DEnv(gym.Env):
     initial_x_pos = 0.
     target_x_pos = 100.
-    simulation_timestep = 0.001
+    simulation_timestep = 0.1
     current_x_pos = 0.
     current_x_vel = 0.
     current_x_acc = 0.
@@ -53,8 +53,8 @@ class Car1DEnv(gym.Env):
 
         # Compute reward
         distance_to_target = self.target_x_pos - self.current_x_pos
-        distance_penalty = distance_to_target ** 2
-        distance_reward = np.exp(-1e-4 * distance_penalty)  # 1 when distance is 0
+        distance_penalty = np.abs(distance_to_target)
+        distance_reward = np.exp(-1e-1 * distance_penalty)  # 1 when distance is 0
         action_penalty = 1 - np.exp(-(self.current_x_acc ** 2))
         self.rewards = {
             "distance_reward": distance_reward,

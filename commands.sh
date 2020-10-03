@@ -4,9 +4,10 @@ python train.py \
 --run_name scratch \
 --env envs:Car1DEnv-v0 \
 --eval_every 10 \
---log_std_init -2.0 \
---total_timesteps 100000 \
---n_steps 1000
+--log_std_init -3.0 \
+--total_timesteps 1000000 \
+--n_steps 1000 \
+--policy_dims 256 256
 
 # After training, appropriate directories are created under checkpoints
 python enjoy.py \

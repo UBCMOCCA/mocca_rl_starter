@@ -160,8 +160,8 @@ def main(args):
         policy_kwargs = dict(
             activation_fn=nn.ReLU,
             net_arch=[dict(
-                vf=[256, 256],
-                pi=[256, 256]
+                vf=args.policy_dims,
+                pi=args.policy_dims
             )
             ],
             log_std_init=args.log_std_init,
@@ -185,6 +185,7 @@ if __name__ == "__main__":
                         type=int)
     parser.add_argument("--total_timesteps", help="Total timesteps to train with PPO", required=True,
                         type=int)
+    parser.add_argument("--policy_dims", nargs='+', type=int, required=True)
     parser.add_argument("--eval_every", help="Evaluate current policy every eval_every episodes", required=True,
                         type=int)
     parser.add_argument("--pretrained_path", help="Path to the pretrained policy zip file, if any", type=str)
