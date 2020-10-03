@@ -10,6 +10,6 @@ python train.py \
 
 # After training, appropriate directories are created under checkpoints
 python enjoy.py \
---env mocca_envs:Car1DEnv-v0 \
+--env envs:Car1DEnv-v0 \
 --policy_path checkpoints/car1d_scratch/latest.zip \
 --stats_path checkpoints/car1d_scratch/latest_stats.pth
